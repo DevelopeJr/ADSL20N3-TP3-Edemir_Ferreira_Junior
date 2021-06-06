@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Data.Models.ProdutoModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+<form asp-action="Index">
+    Entre com nome do produto para buscar:
+    <input type="text" name="busca" value="@ViewData["Busca"]" />
+    <input type="submit" value="Search!" class="btn btn-primary" />
+</form>
+
+<p>
+    <a asp-action="Create">Inserir novo produto</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdProduto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NomeProduto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CaracteristicasProduto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QuantidadeProduto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataFabricacao)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdProduto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomeProduto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CaracteristicasProduto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QuantidadeProduto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataFabricacao)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.IdProduto }) |
+                @Html.ActionLink("Details", "Details", new { id=item.IdProduto }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.IdProduto })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
